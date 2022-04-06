@@ -1,0 +1,53 @@
+@page
+@model shoptry.Pages_Cart.ViewModel
+
+@{
+
+
+
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Cart</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart[0].Product.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart[0].Product.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart[0].Quantity)
+            </th>
+            <th>
+                Total
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cart)
+        {
+            var productTotal = item.Quantity * item.Product.Price;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @productTotal
+                </td>
+                <br>
+            </tr>
+
+        }
+    </tbody>
+</table>

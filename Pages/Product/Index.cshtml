@@ -1,0 +1,92 @@
+@page
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ShopUser> UserManager
+
+@model shoptry.Pages_Product.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (UserManager.GetUserName(User) == "admin@ressot.com")
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].cat)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @* <div>@Html.DisplayFor(model => model.Username)</div> *@
+        @if (UserManager.GetUserName(User) == "admin@ressot.com")
+        {
+            @foreach (var item in Model.Product)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cat)
+                    </td>
+                    <td>
+                        @* <a asp-page="../Cart/Add" asp-route-id="@item.ProductId">Add to Cart</a> *@
+                        <a asp-page="./Edit" asp-route-id="@item.ProductId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ProductId">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            @foreach (var item in Model.Product)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cat)
+                    </td>
+                    <td>
+                        <a asp-page="../Cart/Add" asp-route-id="@item.ProductId">Add to Cart</a>
+                        @* <a asp-page="./Edit" asp-route-id="@item.ProductId">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.ProductId">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a> *@
+                    </td>
+
+                </tr>
+            }
+            <a asp-page="../Cart/View">View Cart</a>
+        }
+    </tbody>
+</table>
