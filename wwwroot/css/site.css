@@ -15,4 +15,79 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: rgb(213, 156, 156);
+}
+
+
+
+footer {
+  background-color: bisque;
+}
+
+.container {
+  background-color: bisque;
+}
+
+#play {
+  width: 100%;
+
+  ;
+
+}
+
+.home {
+  width: 33%;
+  border: 2px black outset;
+}
+
+#company {
+  display: inline-flex;
+}
+
+.ticker {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 60px;
+  margin: 0 auto;
+}
+
+.news {
+  width: 76%;
+  background: #cc4444;
+  padding: 0 2%;
+  font-weight: bold;
+}
+
+.title {
+  width: 20%;
+  text-align: center;
+  background: #c81c1c;
+  position: relative;
+}
+
+.title:after {
+  position: absolute;
+  content: "";
+  right: -16%;
+  border-left: 20px solid #c81c1c;
+  border-top: 33px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 33px solid transparent;
+  top: 0;
+
+}
+
+.title h5 {
+  font-size: 18px;
+  margin: 11% 0;
+
+}
+
+.news marquee {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+
 }
