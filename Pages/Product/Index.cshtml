@@ -17,25 +17,25 @@
 }
 
 <form>
-	<p>
-		Search Name:
-		<input type="search" asp-for="SeachName" />
+    <p>
+        Search Name:
+        <input type="search" asp-for="SeachName" />
 
         Search by Category:
-		<select asp-for="SeachCategory">
-            @foreach (var category in Enum.GetValues(typeof( ProductCategory)))
+        <select asp-for="SeachCategory">
+            @foreach (var category in Enum.GetValues(typeof(ProductCategory)))
             {
                 <option value="@category">
                     @category
                 </option>
             }
-             </select>
-	<br>
-	Enable filter
-	<input type="checkbox" asp-for="filterOn" checked="true" />
-	<input type="submit" value="Search" />
+        </select>
+        <br>
+        Enable filter
+        <input type="checkbox" asp-for="filterOn" checked="true" />
+        <input type="submit" value="Search" />
 
-	</p>
+    </p>
 </form>
 
 <table class="table">

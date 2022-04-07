@@ -13,5 +13,8 @@ public class Product
     public decimal Price { get; set; } = 1000.00M;
     public uint Stock { get; set; } = 0;
     public ProductCategory Category { get; set; }
-
+    [Column(TypeName = "decimal(2,1)")]
+    public decimal? RecAgeMin {get;set;}   
+    [Column(TypeName = "decimal(2,1)")]
+    public decimal? RecAgeMax {get;set;}   
 }
