@@ -5,16 +5,39 @@
 @model shoptry.Pages_Product.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "View Product";
 }
 
-<h1>Index</h1>
+<h1>View Product</h1>
 @if (UserManager.GetUserName(User) == "admin@ressot.com")
 {
     <p>
         <a asp-page="Create">Create New</a>
     </p>
 }
+
+<form>
+	<p>
+		Search Name:
+		<input type="search" asp-for="SeachName" />
+
+        Search by Category:
+		<select asp-for="SeachCategory">
+            @foreach (var category in Enum.GetValues(typeof( ProductCategory)))
+            {
+                <option value="@category">
+                    @category
+                </option>
+            }
+             </select>
+	<br>
+	Enable filter
+	<input type="checkbox" asp-for="filterOn" checked="true" />
+	<input type="submit" value="Search" />
+
+	</p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -28,7 +51,7 @@
                 @Html.DisplayNameFor(model => model.Product[0].Stock)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].cat)
+                @Html.DisplayNameFor(model => model.Product[0].Category)
             </th>
         </tr>
     </thead>
@@ -49,7 +72,7 @@
                         @Html.DisplayFor(modelItem => item.Stock)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.cat)
+                        @Html.DisplayFor(modelItem => item.Category)
                     </td>
                     <td>
                         @* <a asp-page="../Cart/Add" asp-route-id="@item.ProductId">Add to Cart</a> *@
@@ -75,7 +98,7 @@
                         @Html.DisplayFor(modelItem => item.Stock)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.cat)
+                        @Html.DisplayFor(modelItem => item.Category)
                     </td>
                     <td>
                         <a asp-page="../Cart/Add" asp-route-id="@item.ProductId">Add to Cart</a>

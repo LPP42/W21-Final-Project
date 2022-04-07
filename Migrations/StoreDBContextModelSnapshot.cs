@@ -250,6 +250,9 @@ namespace shoptry.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
@@ -258,9 +261,6 @@ namespace shoptry.Migrations
 
                     b.Property<uint>("Stock")
                         .HasColumnType("int unsigned");
-
-                    b.Property<int>("cat")
-                        .HasColumnType("int");
 
                     b.HasKey("ProductId");
 

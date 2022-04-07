@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace shoptry.Models;
 
-public enum Category { Board, Computer, Lego, Plastic, Doll }
+public enum ProductCategory {Any, Board, Computer, Lego, Plastic, Doll, Plushies, Art}
 public class Product
 {
     public int ProductId { get; set; }
@@ -12,6 +12,6 @@ public class Product
     [Column(TypeName = "decimal(6,2)")]
     public decimal Price { get; set; } = 1000.00M;
     public uint Stock { get; set; } = 0;
-    public Category cat { get; set; }
+    public ProductCategory Category { get; set; }
 
 }
