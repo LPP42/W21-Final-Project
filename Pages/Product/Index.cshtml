@@ -6,16 +6,39 @@
 @model shoptry.Pages_Product.IndexModel
 
 @{
-    ViewData["Title"] = "Products Index";
+    ViewData["Title"] = "View Product";
 }
 
-<h1>Products</h1>
+<h1>View Product</h1>
 @if (UserManager.GetUserName(User) == "admin@ressot.com")
 {
     <p>
         <a asp-page="Create">Create New</a>
     </p>
 }
+
+<form>
+    <p>
+        Search Name:
+        <input type="search" asp-for="SeachName" />
+
+        Search by Category:
+        <select asp-for="SeachCategory">
+            @foreach (var category in Enum.GetValues(typeof(ProductCategory)))
+            {
+                <option value="@category">
+                    @category
+                </option>
+            }
+        </select>
+        <br>
+        Enable filter
+        <input type="checkbox" asp-for="filterOn" checked="true" />
+        <input type="submit" value="Search" />
+
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -29,7 +52,7 @@
                 @Html.DisplayNameFor(model => model.Product[0].Stock)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].cat)
+                @Html.DisplayNameFor(model => model.Product[0].Category)
             </th>
         </tr>
     </thead>
@@ -50,7 +73,7 @@
                         @Html.DisplayFor(modelItem => item.Stock)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.cat)
+                        @Html.DisplayFor(modelItem => item.Category)
                     </td>
                     <td>
                         @* <a asp-page="../Cart/Add" asp-route-id="@item.ProductId">Add to Cart</a> *@
@@ -76,23 +99,9 @@
                         @Html.DisplayFor(modelItem => item.Stock)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.cat)
+                        @Html.DisplayFor(modelItem => item.Category)
                     </td>
-                    @* <td>
-                        <form method='post'>
-                        <input type="hidden" value="@item.ProductId" name="ProductId" />
-                        <select name="Quantity"
-                        onchange='document.getElementById("p.@item.ProductId").href="../Cart/Add/@item.ProductId/"+this.value'>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        </select>
-                        </form>
-                        </td> *@
-                    @* <td>
-                        <a asp-page="../Cart/Add" asp-route-quantity="@Model.FormQuantity" asp-route-id="@item.ProductId">Add
-                        to Cart</a>
-                        </td> *@
+
                     <td>
                         <form method='post'>
                             <input type="hidden" value="@item.ProductId" name="ProductId" />
@@ -107,10 +116,7 @@
                             </select>
                         </form>
                     </td>
-                    @* <td>
-                        <a asp-page="../Cart/Add" asp-route-quantity=2 asp-route-id="@item.ProductId">Add
-                        to Cart</a>
-                        </td> *@
+
                     <td><a id='@("p."+@item.ProductId)' href="../Product">Add to Cart</a></td>
                 </tr>
             }

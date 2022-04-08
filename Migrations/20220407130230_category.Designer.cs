@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace shoptry.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    [Migration("20220404192643_migration1")]
-    partial class migration1
+    [Migration("20220407130230_category")]
+    partial class category
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -252,6 +252,9 @@ namespace shoptry.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
@@ -260,9 +263,6 @@ namespace shoptry.Migrations
 
                     b.Property<uint>("Stock")
                         .HasColumnType("int unsigned");
-
-                    b.Property<int>("cat")
-                        .HasColumnType("int");
 
                     b.HasKey("ProductId");
 
