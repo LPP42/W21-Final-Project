@@ -2,10 +2,7 @@
 @model shoptry.Pages_Cart.ViewModel
 
 @{
-
-
-
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Your Cart";
 }
 
 <h1>Cart</h1>
@@ -44,6 +41,9 @@
                 </td>
                 <td>
                     @productTotal
+                </td>
+                <td>
+                    <a asp-page="Remove" asp-route-id="@item.CartId">Remove from Cart</a>
                 </td>
                 <br>
             </tr>

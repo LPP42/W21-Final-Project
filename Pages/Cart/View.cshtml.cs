@@ -33,10 +33,6 @@ namespace shoptry.Pages_Cart
 
         public async Task<IActionResult> OnGetAsync()
         {
-            // if (id == null)
-            // {
-            //     return NotFound();
-            // }
 
             var user = await _userManager.GetUserAsync(User);
             var cusProducts = from m in _context.Cart
@@ -44,15 +40,6 @@ namespace shoptry.Pages_Cart
             cusProducts = cusProducts.Where(s => s.ShopUser == user);
             Cart = await cusProducts.ToListAsync();
 
-            // var product = await _context.Product.FirstOrDefaultAsync(m => m.ProductId == id);
-
-            // _context.Cart.Add(new Cart { Product = product, ShopUser = user, Quantity = 1 });
-            // await _context.SaveChangesAsync();
-
-            // if (product == null)
-            // {
-            //     return NotFound();
-            // }
             return Page();
         }
 
