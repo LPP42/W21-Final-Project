@@ -22,13 +22,25 @@ namespace shoptry.Pages_Product
         public IList<Product> Product { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string SeachName { get; set; }
+        public string SearchName { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public ProductCategory? SeachCategory { get; set; }
+        public ProductCategory? SearchCategory { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public bool filterOn { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public bool filterPriceOn { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public Decimal? SearchAge { get; set; } = null;
+
+        [BindProperty(SupportsGet = true)]
+        public Decimal SearchPriceMax { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public Decimal SearchPriceMin { get; set; }
         public IList<Product> Products { get; set; }
 
         public async Task OnGetAsync()
@@ -38,14 +50,26 @@ namespace shoptry.Pages_Product
             if (filterOn)
             {
                 // filter by name
-                if (!string.IsNullOrEmpty(SeachName))
+                if (!string.IsNullOrEmpty(SearchName))
                 {
-                    products = products.Where(g => g.Name.Contains(SeachName));
+                    products = products.Where(p => p.Name.Contains(SearchName));
                 }
                 // filter by category
-                if (SeachCategory != null && SeachCategory != ProductCategory.Any)
+                if (SearchCategory != null && SearchCategory != ProductCategory.Any)
                 {
-                    products = products.Where(g => g.Category ==  SeachCategory);
+                    products = products.Where(p => p.Category ==  SearchCategory);
+                }
+
+                 // filter by age
+                if (SearchAge != null)
+                {
+                    products = products.Where(p => p.RecAgeMax >= SearchAge && p.RecAgeMin <= SearchAge);
+                }
+
+                 // filter by price
+                if (filterPriceOn)
+                {
+                    products = products.Where(p => p.Price >= SearchPriceMin && p.Price <= SearchPriceMax);
                 }
             }
             Product = await products.ToListAsync();

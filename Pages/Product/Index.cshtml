@@ -19,10 +19,23 @@
 <form>
     <p>
         Search Name:
-        <input type="search" asp-for="SeachName" />
+        <input type="search" asp-for="SearchName"/>
+
+        Filter Price:
+        <input type="checkbox" asp-for="filterPriceOn" checked="true"/>
+
+
+        Set Maximum Price:
+        $<label id="spLabel1" class="spLabel" >@Model.SearchPriceMax</label>
+        <input type="range" oninput="document.getElementById('spLabel1').innerHTML=this.value;" step="2" max="300" asp-for="SearchPriceMax"/>
+
+        Set Minimum Price:
+        $<label id="spLabel2" class="spLabel" >@Model.SearchPriceMin</label>
+        <input type="range" oninput="document.getElementById('spLabel2').innerHTML=this.value;" step="2" max="300" asp-for="SearchPriceMin"/>
+
 
         Search by Category:
-        <select asp-for="SeachCategory">
+        <select asp-for="SearchCategory">
             @foreach (var category in Enum.GetValues(typeof(ProductCategory)))
             {
                 <option value="@category">
@@ -30,6 +43,10 @@
                 </option>
             }
         </select>
+
+        Search by recomended age:
+        <input type="number" asp-for="SearchAge"/>
+
         <br>
         Enable filter
         <input type="checkbox" asp-for="filterOn" checked="true" />
