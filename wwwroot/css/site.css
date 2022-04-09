@@ -94,3 +94,28 @@ footer {
   margin-top: 20px;
 
 }
+
+label.spLabel {
+  width: 20pt;
+}
+
+
+
+form#searchMenu > div{
+  background-color: aquamarine;
+  display: flex;
+  justify-content: flex-start;
+}
+
+div#SearchMenuRight {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-right: 2%;
+}
+
+div#SearchMenuLeft {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}

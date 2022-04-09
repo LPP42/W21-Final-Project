@@ -1,25 +1,3 @@
-label.spLabel {
-    width: 20pt;
-}
 
-
-
-form#searchMenu > div{
-    
-    display: flex;
-    justify-content: space-evenly;
-}
-
-div#SearchMenuRight {
-    display: flex;
-    flex-direction: column;
-    width: max-content;
-}
-
-div#SearchMenuLeft {
-    display: flex;
-    flex-direction: column;
-    width: max-content;
-}
 
 
