@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace shoptry.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    partial class StoreDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220409171443_image3")]
+    partial class image3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -283,12 +285,6 @@ namespace shoptry.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
-
-                    b.Property<decimal?>("RecAgeMax")
-                        .HasColumnType("decimal(3,1)");
-
-                    b.Property<decimal?>("RecAgeMin")
-                        .HasColumnType("decimal(3,1)");
 
                     b.Property<uint>("Stock")
                         .HasColumnType("int unsigned");

@@ -17,4 +17,5 @@ public class StoreDBContext : IdentityDbContext
     public DbSet<shoptry.Models.Product> Product { get; set; }
     public DbSet<ShopUser> ShopUser { get; set; }
     public DbSet<Cart> Cart { get; set; }
+    public DbSet<Image> Image { get; set; }
 }

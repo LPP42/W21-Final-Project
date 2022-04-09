@@ -102,6 +102,9 @@
             {
                 <tr>
                     <td>
+                        <img src="@Url.Content(@item.FirstImage)" height="80px" />
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
@@ -113,7 +116,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Category)
                     </td>
-
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@item.ProductId">Details</a>
+                    </td>
                     <td>
                         <form method='post'>
                             <input type="hidden" value="@item.ProductId" name="ProductId" />
