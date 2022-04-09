@@ -1,6 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using FoolProof.Core;
+using Microsoft.AspNetCore.Mvc;
+
+
 namespace shoptry.Models;
+
 
 public enum ProductCategory { Any, Board, Computer, Lego, Plastic, Doll, Plushies, Art }
 public class Product
@@ -15,4 +20,10 @@ public class Product
     public ProductCategory Category { get; set; }
     public string? FirstImage { get; set; }
 
+    [Column(TypeName = "decimal(3,1)")]
+    [LessThanOrEqualTo("RecAgeMax", ErrorMessage = "")]
+    public decimal? RecAgeMin { get; set; }
+    [GreaterThanOrEqualTo("RecAgeMin", ErrorMessage = "Max Age must be ≥ to  Min Age")]
+    [Column(TypeName = "decimal(3,1)")]
+    public decimal? RecAgeMax { get; set; }
 }

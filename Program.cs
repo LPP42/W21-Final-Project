@@ -2,6 +2,8 @@ global using shoptry.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
+using FoolProof.Core;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +15,7 @@ builder.Services.AddDefaultIdentity<ShopUser>(options => options.SignIn.RequireC
     .AddEntityFrameworkStores<StoreDBContext>();
 builder.Services.AddDbContext<StoreDBContext>(options =>
     options.UseLazyLoadingProxies().UseMySql(connectionString, serverVersion));
+builder.Services.AddFoolProof();
 
 var app = builder.Build();
 
