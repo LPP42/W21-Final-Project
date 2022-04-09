@@ -54,6 +54,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Product[0].Category)
             </th>
+
         </tr>
     </thead>
     <tbody>
@@ -75,6 +76,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Category)
                     </td>
+
                     <td>
                         @* <a asp-page="../Cart/Add" asp-route-id="@item.ProductId">Add to Cart</a> *@
                         <a asp-page="./Edit" asp-route-id="@item.ProductId">Edit</a> |
