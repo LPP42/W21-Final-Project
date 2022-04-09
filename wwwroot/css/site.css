@@ -15,8 +15,8 @@ html {
 
 body {
   margin-bottom: 60px;
-  background-color: rgb(213, 156, 156);
-  background-image: url("../css/images/shoptry.jpg.png");
+  /* background-color: rgb(213, 156, 156);*/
+  background-image: url("../css/images/shoptryc.jpg");
 }
 
 .no-click {
@@ -30,6 +30,7 @@ footer {
 
 .container {
   background-color: bisque;
+  font-weight: 500;
 }
 
 #play {
@@ -94,4 +95,67 @@ footer {
   font-weight: bold;
   margin-top: 20px;
 
+}
+
+.nav-link:hover {
+
+  /*background: rgb(133, 133, 192);*/
+  background-color: rgb(213, 156, 156);
+  padding: 15px 2px;
+  transition: 0.2s;
+  font-style: oblique;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.btn-primary:hover {
+  background-color: rgb(213, 156, 156);
+  padding: 15px 2px;
+  transition: 0.2s;
+  font-style: oblique;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.srch:hover {
+  background-color: rgb(213, 156, 156);
+  padding: 5px 2px;
+  transition: 0.2s;
+  font-style: oblique;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.table:hover {
+  background-color: rgb(213, 156, 156);
+  padding: 5px 2px;
+  transition: 0.2s;
+  font-style: oblique;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+a:hover {
+  background-color: rgb(213, 156, 156);
+  padding: 5px 2px;
+  transition: 0.2s;
+  font-style: oblique;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0077cc;
+
+
+}
+
+a {
+  text-decoration: none;
+  color: brown;
+  font-weight: 500;
 }
