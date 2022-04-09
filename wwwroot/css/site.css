@@ -96,12 +96,9 @@ label.spLabel {
   width: 20pt;
 }
 
-
-
-form#searchMenu > div{
-  background-color: aquamarine;
-  display: flex;
-  justify-content: flex-start;
+form#searchMenu {
+  display: flex ; 
+  justify-content: flex-start ;
 }
 
 div#SearchMenuRight {
@@ -116,3 +113,4 @@ div#SearchMenuLeft {
   flex-direction: column;
   width: max-content;
 }
+
