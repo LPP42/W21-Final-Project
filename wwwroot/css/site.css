@@ -15,8 +15,8 @@ html {
 
 body {
   margin-bottom: 60px;
-  /*background-color: rgb(213, 156, 156);*/
-  background-image: url("shoptry.jpg");
+  background-color: rgb(213, 156, 156);
+  background-image: url("../css/images/shoptry.jpg.png");
 }
 
 .no-click {
