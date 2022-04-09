@@ -244,6 +244,28 @@ namespace shoptry.Migrations
                     b.ToTable("Cart");
                 });
 
+            modelBuilder.Entity("shoptry.Models.Image", b =>
+                {
+                    b.Property<uint>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int unsigned");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("File")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImageId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("shoptry.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -253,11 +275,20 @@ namespace shoptry.Migrations
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
+                    b.Property<string>("FirstImage")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
+
+                    b.Property<decimal?>("RecAgeMax")
+                        .HasColumnType("decimal(3,1)");
+
+                    b.Property<decimal?>("RecAgeMin")
+                        .HasColumnType("decimal(3,1)");
 
                     b.Property<uint>("Stock")
                         .HasColumnType("int unsigned");
@@ -362,6 +393,15 @@ namespace shoptry.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("ShopUser");
+                });
+
+            modelBuilder.Entity("shoptry.Models.Image", b =>
+                {
+                    b.HasOne("shoptry.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

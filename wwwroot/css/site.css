@@ -19,9 +19,6 @@ body {
   background-image: url("../css/images/shoptryc.jpg");
 }
 
-.no-click {
-  pointer-events: none;
-}
 
 
 footer {
@@ -158,4 +155,26 @@ a {
   text-decoration: none;
   color: brown;
   font-weight: 500;
+}
+
+label.spLabel {
+  width: 20pt;
+}
+
+form#searchMenu {
+  display: flex;
+  justify-content: flex-start;
+}
+
+div#SearchMenuRight {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-right: 2%;
+}
+
+div#SearchMenuLeft {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
 }

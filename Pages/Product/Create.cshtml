@@ -18,11 +18,13 @@
                 <input asp-for="Product.Name" class="form-control" />
                 <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <label asp-for="Product.Price" class="control-label"></label>
                 <input asp-for="Product.Price" class="form-control" />
                 <span asp-validation-for="Product.Price" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Product.Stock" class="control-label"></label>
                 <input asp-for="Product.Stock" class="form-control" />
@@ -42,6 +44,19 @@
                 </select>
                 <span asp-validation-for="Product.Category" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Product.RecAgeMin" class="control-label"></label>
+                    <input asp-for="Product.RecAgeMin" class="form-control" type="number" step=".5" />
+                    <span asp-validation-for="Product.RecAgeMin" class="text-danger"></span>
+
+                    <label asp-for="Product.RecAgeMax" class="control-label"></label>
+                    <input asp-for="Product.RecAgeMax" class="form-control" type="number" step=".5" />
+                    <span asp-validation-for="Product.RecAgeMax" class="text-danger"></span>
+                </div>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
