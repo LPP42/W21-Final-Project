@@ -1,3 +1,4 @@
+
 #nullable disable
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,11 @@ namespace shoptry.Pages_Product
         public bool filterOn { get; set; }
         public IList<Product> Products { get; set; }
 
+        public class ProductQuantity
+        {
+            public uint? ProductId { get; set; }
+            public uint? Quantity { get; set; }
+        }
         public async Task OnGetAsync()
         {
             var products = from p in _context.Product select p;
@@ -45,10 +51,17 @@ namespace shoptry.Pages_Product
                 // filter by category
                 if (SeachCategory != null && SeachCategory != ProductCategory.Any)
                 {
-                    products = products.Where(g => g.Category ==  SeachCategory);
+                    products = products.Where(g => g.Category == SeachCategory);
                 }
             }
             Product = await products.ToListAsync();
+        }
+        public async void OnPostAsync(ProductQuantity productQuantity)
+        {
+            _logger.Log(LogLevel.Information, productQuantity.ProductId.ToString());
+            _logger.Log(LogLevel.Information, productQuantity.Quantity.ToString());
+
+            Product = await _context.Product.ToListAsync();
         }
     }
 }
