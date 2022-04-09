@@ -5,7 +5,7 @@ label.spLabel {
 
 
 form#searchMenu > div{
-    background-color: rgb(176, 176, 124);
+    
     display: flex;
     justify-content: space-evenly;
 }
