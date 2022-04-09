@@ -19,9 +19,9 @@ public class Product
     public uint Stock { get; set; } = 0;
     public ProductCategory Category { get; set; }
     [Column(TypeName = "decimal(3,1)")]
-    [LessThanOrEqualTo("RecAgeMax",ErrorMessage ="Min age must be less equal or Max age")]
+    [LessThanOrEqualTo("RecAgeMax",ErrorMessage ="")]
     public decimal? RecAgeMin {get;set;} 
-    [GreaterThanOrEqualTo("RecAgeMin",ErrorMessage ="Min age must be less equal or Max age")]  
+    [GreaterThanOrEqualTo("RecAgeMin",ErrorMessage ="Max Age must be ≥ to  Min Age")]  
     [Column(TypeName = "decimal(3,1)")]
     public decimal? RecAgeMax {get;set;}   
 }

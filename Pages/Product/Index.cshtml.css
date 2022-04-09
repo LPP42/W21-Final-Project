@@ -1,0 +1,25 @@
+label.spLabel {
+    width: 20pt;
+}
+
+
+
+form#searchMenu > div{
+    background-color: rgb(176, 176, 124);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+div#SearchMenuRight {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+div#SearchMenuLeft {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+
