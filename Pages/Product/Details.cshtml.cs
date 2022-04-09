@@ -13,7 +13,7 @@ namespace shoptry.Pages_Product
     public class DetailsModel : PageModel
     {
         private readonly StoreDBContext _context;
-
+        public IList<Image> Images { get; set; }
         public DetailsModel(StoreDBContext context)
         {
             _context = context;
@@ -34,7 +34,31 @@ namespace shoptry.Pages_Product
             {
                 return NotFound();
             }
+
+            // var products = from p in _context.Product select p;
+            // products = products.Where(g => g.Category == SeachCategory);
+            // Product = await products.ToListAsync();
+
+            var images = from g in _context.Image select g;
+
+            images = images.Where(g => g.Product == Product);
+
+            Images = await images.ToListAsync();
+
             return Page();
         }
+        //     public ActionResult GetImage(int id)
+        // {
+        //     var firstOrDefault = _context.Image.Where(c => c.Product == Product).FirstOrDefault();
+        //     if (firstOrDefault != null)
+        //     {
+        //         byte[] image = firstOrDefault.File;
+        //         return File(image, "image/jpg");
+        //     }
+        //     else
+        //     {
+        //         return null;
+        //     }
+        // }
     }
 }
