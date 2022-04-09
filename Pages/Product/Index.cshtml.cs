@@ -37,7 +37,7 @@ namespace shoptry.Pages_Product
         public Decimal? SearchAge { get; set; } = null;
 
         [BindProperty(SupportsGet = true)]
-        public Decimal SearchPriceMax { get; set; }
+        public Decimal SearchPriceMax { get; set; } = 300;
 
         [BindProperty(SupportsGet = true)]
         public Decimal SearchPriceMin { get; set; }
