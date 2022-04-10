@@ -140,7 +140,6 @@ footer {
   font-style: oblique;
   font-size: larger;
   font-weight: bold;
-  cursor: pointer;
 }
 
 a:hover {
@@ -153,8 +152,6 @@ a:hover {
   cursor: pointer;
   text-decoration: underline;
   color: #0077cc;
-
-
 }
 
 a {
