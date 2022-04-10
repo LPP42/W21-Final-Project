@@ -54,15 +54,19 @@ namespace shoptry.Pages_Cart
             var cart = await _context.Cart.FirstOrDefaultAsync(c => c.Product == product && c.ShopUser == user);
             if (product != null && user != null)
             {
-                if (cart == null)
+                if (quantity <= product.Stock)
                 {
-                    _context.Cart.Add(new Cart { Product = product, ShopUser = user, Quantity = quantity });
+                    if (cart == null)
+                    {
+                        _context.Cart.Add(new Cart { Product = product, ShopUser = user, Quantity = quantity });
+                    }
+                    else
+                    {
+                        cart.Quantity = cart.Quantity + quantity;
+                    }
+                    await _context.SaveChangesAsync();
                 }
-                else
-                {
-                    cart.Quantity = cart.Quantity + quantity;
-                }
-                await _context.SaveChangesAsync();
+                else return Redirect("../Product/Index");
             }
             if (product == null)
             {
