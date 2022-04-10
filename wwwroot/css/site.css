@@ -127,7 +127,13 @@ footer {
   cursor: pointer;
 }
 
-.table:hover {
+.srch {
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+  color: #fff;
+}
+
+.itemBar:hover {
   background-color: rgb(213, 156, 156);
   padding: 5px 2px;
   transition: 0.2s;
