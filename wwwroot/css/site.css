@@ -32,9 +32,6 @@ footer {
 
 #play {
   width: 100%;
-
-  ;
-
 }
 
 .home {
@@ -156,8 +153,9 @@ a:hover {
 
 a {
   text-decoration: none;
-  color: brown;
+  /*color: brown;*/
   font-weight: 500;
+  color: #0077cc;
 }
 
 label.spLabel {
