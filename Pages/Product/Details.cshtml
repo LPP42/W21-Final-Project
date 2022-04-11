@@ -76,13 +76,13 @@
             <tbody>
                 @foreach (var item in Model.SimilarProducts)
                 {
-                    <colgroup>
-
-                        <td id="detail-images"><img src="@Url.Content(@item.FirstImage)" height="180px" /></td>
+                    <td>
+                    <td id="detail-images"><a asp-page="./Details" asp-route-id="@item.ProductId"><img
+                        src="@Url.Content(@item.FirstImage)" height="180px" /></a></td>
                     <tr>
-                        <td> @Html.DisplayFor(modelItem => item.Name) </td>
+                        <td><a asp-page="./Details" asp-route-id="@item.ProductId">@item.Name</a> </td>
                     </tr>
-                    </colgroup>
+                    </td>
                 }
         </table>
     }
