@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,13 +13,13 @@ namespace shoptry.Pages_Product
 {
     public class DeleteModel : PageModel
     {
-         private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<IndexModel> _logger;
         private readonly StoreDBContext _context;
 
         public DeleteModel(StoreDBContext context, ILogger<IndexModel> logger)
         {
             _context = context;
-              _logger = logger;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -28,30 +29,40 @@ namespace shoptry.Pages_Product
         {
             if (User.Identity.IsAuthenticated)
             {
-                return Page();
+                var usr = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var siteUsr = _context.ShopUser.Where(u => u.Id == usr).FirstOrDefault();
+                if (siteUsr != null)
+                {
+                    if (siteUsr.isAdmin)
+                    {
+                        return Page();
+                    }
+                }
             }
-            else
-            {
-                _logger.Log(LogLevel.Information, "**NO user is  authenticated! BAD VERY BAD!***");
-                return RedirectToPage("./Index");
-            }
+            _logger.Log(LogLevel.Information, "*** Can't access that page!!! ***");
+            return RedirectToPage("./Index");
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null)
+            if (User.Identity.IsAuthenticated)
             {
-                return NotFound();
+                var usr = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var siteUsr = _context.ShopUser.Where(u => u.Id == usr).FirstOrDefault();
+                if (siteUsr != null)
+                {
+                    if (siteUsr.isAdmin)
+                    {
+                        Product = await _context.Product.FindAsync(id);
+                        if (Product != null)
+                        {
+                            _context.Product.Remove(Product);
+                            await _context.SaveChangesAsync();
+                        }
+                        return RedirectToPage("./Index");
+                    }
+                }
             }
-
-            Product = await _context.Product.FindAsync(id);
-
-            if (Product != null)
-            {
-                _context.Product.Remove(Product);
-                await _context.SaveChangesAsync();
-            }
-
             return RedirectToPage("./Index");
         }
     }

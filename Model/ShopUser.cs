@@ -22,5 +22,7 @@ public class ShopUser : IdentityUser
     public string? Province { get; set; }
     [PersonalData]
     public string? Phone { get; set; }
+    
+    public bool isAdmin {get;set;} = false;
 
 }

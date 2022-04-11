@@ -39,13 +39,21 @@ namespace shoptry.Pages_Cart
         public async Task<IActionResult> OnGetAsync()
         {
 
-            var user = await _userManager.GetUserAsync(User);
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.GetUserAsync(User);
             var cusProducts = from m in _context.Cart
                               select m;
             cusProducts = cusProducts.Where(s => s.ShopUser == user);
             Cart = await cusProducts.ToListAsync();
+                return Page();
+            }
+            else
+            {
+                _logger.Log(LogLevel.Information, "**NO user is  authenticated! BAD VERY BAD!***");
+                return RedirectToPage("../Product/Index");
+            }
 
-            return Page();
         }
 
     }
