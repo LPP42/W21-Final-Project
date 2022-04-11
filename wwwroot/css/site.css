@@ -94,10 +94,10 @@ footer {
 
   /*background: rgb(133, 133, 192);*/
   background-color: rgb(213, 156, 156);
-  padding: 15px 2px;
+  /* padding: 15px 2px; */
   transition: 0.2s;
   font-style: oblique;
-  font-size: larger;
+  /* font-size: larger; */
   font-weight: bold;
   cursor: pointer;
 
@@ -105,20 +105,20 @@ footer {
 
 .btn-primary:hover {
   background-color: rgb(213, 156, 156);
-  padding: 15px 2px;
+  /* padding: 15px 2px; */
   transition: 0.2s;
   font-style: oblique;
-  font-size: larger;
+  /* font-size: larger; */
   font-weight: bold;
   cursor: pointer;
 }
 
 .srch:hover {
   background-color: rgb(213, 156, 156);
-  padding: 5px 2px;
+  /* padding: 5px 2px; */
   transition: 0.2s;
   font-style: oblique;
-  font-size: larger;
+  /* font-size: larger; */
   font-weight: bold;
   cursor: pointer;
 }
@@ -131,19 +131,19 @@ footer {
 
 .itemBar:hover {
   background-color: rgb(213, 156, 156);
-  padding: 5px 2px;
+  /* padding: 5px 2px; */
   transition: 0.2s;
   font-style: oblique;
-  font-size: larger;
+  /* font-size: larger; */
   font-weight: bold;
 }
 
 a:hover {
   background-color: rgb(213, 156, 156);
-  padding: 5px 2px;
+  /* padding: 5px 2px; */
   transition: 0.2s;
   font-style: oblique;
-  font-size: larger;
+  /* font-size: larger; */
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
@@ -179,9 +179,14 @@ div#SearchMenuLeft {
   width: max-content;
 }
 
+<<<<<<< HEAD
+
+
+=======
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
   /* 5px rounded corners */
 }
+>>>>>>> 415e33cc38ab21e3fda373cb2a686d6f3113d1b5

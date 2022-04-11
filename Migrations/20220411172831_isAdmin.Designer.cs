@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace shoptry.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    [Migration("20220409174747_Images")]
-    partial class Images
+    [Migration("20220411172831_isAdmin")]
+    partial class isAdmin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -324,6 +324,9 @@ namespace shoptry.Migrations
 
                     b.Property<int>("StreetNumber")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasDiscriminator().HasValue("ShopUser");
                 });
