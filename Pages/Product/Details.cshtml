@@ -68,3 +68,22 @@
     |
     <a asp-page="./Index">Back to List</a>
 </div>
+<div>
+    @if (Model.SimilarProducts != null)
+    {
+        <h3>Recommended for You</h3>
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model.SimilarProducts)
+                {
+                    <td>
+                    <td id="detail-images"><a asp-page="./Details" asp-route-id="@item.ProductId"><img
+                        src="@Url.Content(@item.FirstImage)" height="180px" /></a></td>
+                    <tr>
+                        <td><a asp-page="./Details" asp-route-id="@item.ProductId">@item.Name</a> </td>
+                    </tr>
+                    </td>
+                }
+        </table>
+    }
+</div>
