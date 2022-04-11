@@ -13,7 +13,8 @@ namespace shoptry.Pages_Product
     public class DeleteModel : PageModel
     {
         private readonly StoreDBContext _context;
-
+        public IList<Image> Images { get; set; }
+        public IList<Cart> Carts { get; set; }
         public DeleteModel(StoreDBContext context)
         {
             _context = context;
@@ -35,6 +36,7 @@ namespace shoptry.Pages_Product
             {
                 return NotFound();
             }
+
             return Page();
         }
 
@@ -49,6 +51,24 @@ namespace shoptry.Pages_Product
 
             if (Product != null)
             {
+                var images = from g in _context.Image select g;
+
+                images = images.Where(g => g.Product == Product);
+                Images = await images.ToListAsync();
+                foreach (var item in Images)
+                {
+                    _context.Image.Remove(item);
+                }
+                await _context.SaveChangesAsync();
+                var carts = from c in _context.Cart select c;
+
+                carts = carts.Where(c => c.Product == Product);
+                Carts = await carts.ToListAsync();
+                foreach (var citem in Carts)
+                {
+                    _context.Cart.Remove(citem);
+                }
+                await _context.SaveChangesAsync();
                 _context.Product.Remove(Product);
                 await _context.SaveChangesAsync();
             }
