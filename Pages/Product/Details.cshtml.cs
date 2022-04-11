@@ -18,7 +18,7 @@ namespace shoptry.Pages_Product
         {
             _context = context;
         }
-
+        public IList<Product> SimilarProducts { get; set; }
         public Product Product { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -27,13 +27,15 @@ namespace shoptry.Pages_Product
             {
                 return NotFound();
             }
-
+            var similarproducts = from p in _context.Product select p;
             Product = await _context.Product.FirstOrDefaultAsync(m => m.ProductId == id);
 
             if (Product == null)
             {
                 return NotFound();
             }
+
+            similarproducts = similarproducts.Where(p => p.Category == Product.Category && p != Product && p.Price <= (Product.Price + 10) && p.Price >= Product.Price - 10);
 
             // var products = from p in _context.Product select p;
             // products = products.Where(g => g.Category == SeachCategory);
@@ -44,7 +46,7 @@ namespace shoptry.Pages_Product
             images = images.Where(g => g.Product == Product);
 
             Images = await images.ToListAsync();
-
+            SimilarProducts = await similarproducts.ToListAsync();
             return Page();
         }
         //     public ActionResult GetImage(int id)
@@ -59,6 +61,6 @@ namespace shoptry.Pages_Product
         //     {
         //         return null;
         //     }
-        // }
+        // } 
     }
 }
