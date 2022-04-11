@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -20,6 +21,7 @@ namespace shoptry.Pages_Product
             _logger = logger;
             _context = context;
         }
+        public bool isAllowed {get;set;} = false;
         public IList<Product> Product { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -53,6 +55,18 @@ namespace shoptry.Pages_Product
         {
             var products = from p in _context.Product select p;
 
+  if (User.Identity.IsAuthenticated)
+            {
+                var usr = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var siteUsr = _context.ShopUser.Where(u => u.Id == usr).FirstOrDefault();
+                if (siteUsr != null)
+                {
+                    if (siteUsr.isAdmin)
+                    {
+                       isAllowed =true;
+                    }
+                }
+            }
             if (filterOn)
             {
                 // filter by name
