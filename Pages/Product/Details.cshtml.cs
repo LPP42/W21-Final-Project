@@ -37,10 +37,6 @@ namespace shoptry.Pages_Product
 
             similarproducts = similarproducts.Where(p => p.Category == Product.Category && p != Product && p.Price <= (Product.Price + 10) && p.Price >= Product.Price - 10);
 
-            // var products = from p in _context.Product select p;
-            // products = products.Where(g => g.Category == SeachCategory);
-            // Product = await products.ToListAsync();
-
             var images = from g in _context.Image select g;
 
             images = images.Where(g => g.Product == Product);
@@ -49,18 +45,5 @@ namespace shoptry.Pages_Product
             SimilarProducts = await similarproducts.ToListAsync();
             return Page();
         }
-        //     public ActionResult GetImage(int id)
-        // {
-        //     var firstOrDefault = _context.Image.Where(c => c.Product == Product).FirstOrDefault();
-        //     if (firstOrDefault != null)
-        //     {
-        //         byte[] image = firstOrDefault.File;
-        //         return File(image, "image/jpg");
-        //     }
-        //     else
-        //     {
-        //         return null;
-        //     }
-        // } 
+
     }
-}
