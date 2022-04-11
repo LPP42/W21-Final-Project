@@ -293,9 +293,6 @@ namespace shoptry.Migrations
                     b.Property<uint>("Stock")
                         .HasColumnType("int unsigned");
 
-                    b.Property<string>("image")
-                        .HasColumnType("longtext");
-
                     b.HasKey("ProductId");
 
                     b.ToTable("Product");
@@ -325,6 +322,9 @@ namespace shoptry.Migrations
 
                     b.Property<int>("StreetNumber")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasDiscriminator().HasValue("ShopUser");
                 });
