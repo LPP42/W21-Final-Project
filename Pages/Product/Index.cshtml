@@ -10,7 +10,7 @@
 }
 
 <h1>View Product</h1>
-@if (UserManager.GetUserName(User) == "admin@ressot.com")
+@if (Model.isAllowed)
 {
     <p>
         <a asp-page="Create">Create New</a>
@@ -77,7 +77,7 @@
     </thead>
     <tbody>
         @* <div>@Html.DisplayFor(model => model.Username)</div> *@
-        @if (UserManager.GetUserName(User) == "admin@ressot.com")
+        @if (Model.isAllowed)
         {
             @foreach (var item in Model.Product)
             {
