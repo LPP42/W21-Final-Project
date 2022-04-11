@@ -12,30 +12,29 @@ namespace shoptry.Pages_Product
 {
     public class DeleteModel : PageModel
     {
+         private readonly ILogger<IndexModel> _logger;
         private readonly StoreDBContext _context;
 
-        public DeleteModel(StoreDBContext context)
+        public DeleteModel(StoreDBContext context, ILogger<IndexModel> logger)
         {
             _context = context;
+              _logger = logger;
         }
 
         [BindProperty]
         public Product Product { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet()
         {
-            if (id == null)
+            if (User.Identity.IsAuthenticated)
             {
-                return NotFound();
+                return Page();
             }
-
-            Product = await _context.Product.FirstOrDefaultAsync(m => m.ProductId == id);
-
-            if (Product == null)
+            else
             {
-                return NotFound();
+                _logger.Log(LogLevel.Information, "**NO user is  authenticated! BAD VERY BAD!***");
+                return RedirectToPage("./Index");
             }
-            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)

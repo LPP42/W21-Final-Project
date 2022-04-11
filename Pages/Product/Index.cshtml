@@ -138,12 +138,14 @@
                             </select>
                         </form>
                     </td>
-
+@if (UserManager.GetUserName(User) != null){
                     <td><a id='@("p."+@item.ProductId)' href="../Product">Add to Cart</a></td>
+}
                 </tr>
             }
-
+@if (UserManager.GetUserName(User) != null){
             <a asp-page="../Cart/View">View Cart</a>
+}
         }
     </tbody>
 </table>

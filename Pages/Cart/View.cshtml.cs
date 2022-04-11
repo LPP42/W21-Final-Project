@@ -11,10 +11,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using shoptry.Pages;
+
 namespace shoptry.Pages_Cart
 {
     public class ViewModel : PageModel
     {
+        private readonly ILogger<IndexModel> _logger;
+        
         private readonly UserManager<ShopUser> _userManager;
         private readonly SignInManager<ShopUser> _signInManager;
 
@@ -23,11 +27,12 @@ namespace shoptry.Pages_Cart
         private readonly StoreDBContext _context;
         //private readonly UserManager<ShopUser> _userManager;
         public ViewModel(StoreDBContext context, UserManager<ShopUser> userManager,
-            SignInManager<ShopUser> signInManager)
+            SignInManager<ShopUser> signInManager , ILogger<IndexModel> logger)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
+             _logger = logger;
         }
 
 

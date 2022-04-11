@@ -12,16 +12,26 @@ namespace shoptry.Pages_Product
 {
     public class CreateModel : PageModel
     {
+         private readonly ILogger<IndexModel> _logger;
         private readonly StoreDBContext _context;
 
-        public CreateModel(StoreDBContext context)
+        public CreateModel(StoreDBContext context, ILogger<IndexModel> logger)
         {
             _context = context;
+              _logger = logger;
         }
 
         public IActionResult OnGet()
         {
-            return Page();
+           if (User.Identity.IsAuthenticated)
+            {
+                return Page();
+            }
+            else
+            {
+                _logger.Log(LogLevel.Information, "**NO user is  authenticated! BAD VERY BAD!***");
+                return RedirectToPage("./Index");
+            }
         }
 
         [BindProperty]
