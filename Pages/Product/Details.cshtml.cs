@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -20,9 +21,23 @@ namespace shoptry.Pages_Product
         }
         public IList<Product> SimilarProducts { get; set; }
         public Product Product { get; set; }
-
+        public bool isAllowed {get;set;} = false;
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
+             if (User.Identity.IsAuthenticated)
+            {
+                var usr = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var siteUsr = _context.ShopUser.Where(u => u.Id == usr).FirstOrDefault();
+                if (siteUsr != null)
+                {
+                    if (siteUsr.isAdmin)
+                    {
+                       isAllowed =true;
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return NotFound();
